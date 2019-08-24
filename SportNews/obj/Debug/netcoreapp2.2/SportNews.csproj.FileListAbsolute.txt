@@ -41,3 +41,46 @@ D:\SummerSchoolProject\SportNews\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\I
 D:\SummerSchoolProject\SportNews\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
 D:\SummerSchoolProject\SportNews\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 D:\SummerSchoolProject\SportNews\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\bin\Debug\netcoreapp2.2\SportNews.deps.json
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\bin\Debug\netcoreapp2.2\SportNews.runtimeconfig.json
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\bin\Debug\netcoreapp2.2\SportNews.runtimeconfig.dev.json
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\bin\Debug\netcoreapp2.2\SportNews.dll
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\bin\Debug\netcoreapp2.2\SportNews.pdb
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\bin\Debug\netcoreapp2.2\SportNews.Views.dll
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\bin\Debug\netcoreapp2.2\SportNews.Views.pdb
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.csprojAssemblyReference.cache
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.csproj.CoreCompileInputs.cache
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.RazorAssemblyInfo.cache
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.RazorAssemblyInfo.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.AssemblyInfoInputs.cache
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.AssemblyInfo.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.TagHelpers.input.cache
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.TagHelpers.output.cache
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.RazorCoreGenerate.cache
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ForgotPassword.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Login.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Register.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ResetPassword.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\_ViewImports.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.RazorTargetAssemblyInfo.cache
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.RazorTargetAssemblyInfo.cs
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.Views.pdb
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.dll
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.pdb
+C:\Users\rostik vasylyk\Desktop\SoftServe .Net\project\server-side\SportNews\obj\Debug\netcoreapp2.2\SportNews.csproj.CopyComplete
