@@ -41,18 +41,16 @@ namespace SportNews
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddAuthentication().AddFacebook(facebookOptions =>
+            services.AddAuthentication()
+                .AddFacebook(facebookOptions =>
             {
-                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
-                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+                facebookOptions.AppId = Configuration.GetConnectionString("Authentication:Facebook:AppId");
+                facebookOptions.AppSecret = Configuration.GetConnectionString("Authentication:Facebook:AppSecret");
             })
-            .AddGoogle(options =>
+                .AddGoogle(options =>
             {
-                IConfigurationSection googleAuthNSection =
-                    Configuration.GetSection("Authentication:Google");
-
-                options.ClientId = googleAuthNSection["ClientId"];
-                options.ClientSecret = googleAuthNSection["ClientSecret"];
+                options.ClientId = Configuration.GetConnectionString("Authentication:Google:ClientId");
+                options.ClientSecret = Configuration.GetConnectionString("Authentication:Google:ClientSecret");
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
