@@ -13,6 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using SportNews.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using SportNews.Services;
 
 namespace SportNews
 {
@@ -28,6 +31,11 @@ namespace SportNews
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var configBuilder = new ConfigurationBuilder()
+               .SetBasePath(Directory.GetCurrentDirectory())
+               .AddJsonFile("appsettings.json", optional: true);
+            var configApp = configBuilder.Build();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -38,9 +46,12 @@ namespace SportNews
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<IdentityUser>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+               .AddDefaultUI(UIFramework.Bootstrap4)
+               .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddAuthentication()
                 .AddFacebook(facebookOptions =>
             {
@@ -52,6 +63,8 @@ namespace SportNews
                 options.ClientId = Configuration.GetConnectionString("Authentication:Google:ClientId");
                 options.ClientSecret = Configuration.GetConnectionString("Authentication:Google:ClientSecret");
             });
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(configApp.GetSection("ConnectionStrings"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
