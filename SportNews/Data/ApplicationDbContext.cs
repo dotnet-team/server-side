@@ -14,8 +14,13 @@ namespace SportNews.Data
         {
         }
 
-        public DbSet<MainNavigationMenu> mainNavigationMenus { get; set; }
-        public DbSet<SecondNavigationMenu> secondNavigationMenus { get; set; }
+        public DbSet<Article> articles { get; set; }
+        public DbSet<Category> categories { get; set; }
+        public DbSet<CategoryUser> categoryUsers { get; set; }
+        public DbSet<Comment> comments { get; set; }
+        public DbSet<Division> divisions { get; set; }
+        public DbSet<Team> teams { get; set; }
+        public DbSet<User> users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
