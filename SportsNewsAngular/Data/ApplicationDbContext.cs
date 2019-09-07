@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SportsNewsAngular.Models;
 
 namespace SportsNewsAngular.Data
 {
@@ -17,5 +18,7 @@ namespace SportsNewsAngular.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        DbSet<SideNaw> sideNaws { get; set; }
     }
 }
