@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { SideNav } from './sidenav';
+import { SideNav, Team } from './sidenav';
 
 @Component({
   selector: 'app-side-nav',
@@ -11,18 +11,25 @@ import { SideNav } from './sidenav';
 export class SideNavComponent implements OnInit {
 
   sidenav: SideNav = new SideNav();   // изменяемый товар
-  sidenavs: SideNav[];                // массив товаров
+  sidenavs: SideNav[];
+  team: Team = new Team();
+  teams: Team[];
   tableMode: boolean = true;          // табличный режим
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.loadSideNavs();    // загрузка данных при старте компонента  
+    this.loadSideNavs();
   }
   // получаем данные через сервис
   loadSideNavs() {
     this.dataService.getSideNavs()
       .subscribe((data: SideNav[]) => this.sidenavs = data);
+  }
+
+  loadTeams(id?: number) {
+    this.dataService.getTeams(id)
+      .subscribe((data: Team[]) => this.teams = data);
   }
   // сохранение данных
   save() {
@@ -49,6 +56,14 @@ export class SideNavComponent implements OnInit {
   add() {
     this.cancel();
     this.tableMode = false;
+  }
+
+
+  onMouseOver(event) {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+    this.loadTeams(value);                               
   }
 }
 

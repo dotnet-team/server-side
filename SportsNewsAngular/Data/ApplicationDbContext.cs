@@ -19,6 +19,14 @@ namespace SportsNewsAngular.Data
         {
         }
 
-        DbSet<SideNaw> sideNaws { get; set; }
+        DbSet<SideNav> SideNavs { get; set; }
+        DbSet<Team> Teams { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        }
+
     }
 }

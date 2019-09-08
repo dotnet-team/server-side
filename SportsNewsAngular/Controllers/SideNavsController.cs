@@ -19,48 +19,52 @@ namespace SportsNewsAngular.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SideNaw>>> GetAll()
+        public async Task<ActionResult<IEnumerable<SideNav>>> GetAll()
         {
-            var sideNavs = await repository.FindAll<SideNaw>();
+            var sideNavs = await repository.FindAll<SideNav>();
 
             return sideNavs;
         }
 
         [HttpGet]
-        public async Task<ActionResult<SideNaw>> GetById(int id)
+        public async Task<ActionResult<SideNav>> GetById(int id)
         {
-            var sideNav = await repository.FindById<SideNaw>(id);
+            var sideNav = await repository.FindById<SideNav>(id);
 
             return sideNav;
         }
 
         [HttpPost]
-        public async Task<ActionResult<SideNaw>> Create([FromBody] SideNaw sideNaw)
+        public async Task<ActionResult<SideNav>> Create([FromBody] SideNav sideNav)
         {
-            await repository.CreateAsync<SideNaw>(sideNaw);
+            await repository.CreateAsync<SideNav>(sideNav);
 
-            return sideNaw;
+            return sideNav;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<SideNaw>> Update(int id, [FromBody] SideNaw sideNaw)
+        [HttpPut]
+        public async Task<ActionResult<SideNav>> Update(int id, [FromBody] SideNav sideNav)
         {
-            await repository.UpdateAsync<SideNaw>(sideNaw);
+            if (id != sideNav.Id)
+            {
+                return BadRequest();
+            }
+            await repository.UpdateAsync<SideNav>(sideNav);
 
-            return sideNaw;
+            return sideNav;
         }
 
         [HttpDelete]
         public async Task Delete (int id)
         {
-            var sideNav = await repository.FindById<SideNaw>(id);
+            var sideNav = await repository.FindById<SideNav>(id);
 
             if (sideNav == null)
             {
                 NotFound();
             }
 
-            await repository.DeleteAsync<SideNaw>(sideNav);
+            await repository.DeleteAsync<SideNav>(sideNav);
         }
 
     }

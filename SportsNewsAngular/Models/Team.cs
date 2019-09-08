@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace SportsNewsAngular.Models
 {
-    public class SideNav : Entity
+    public class Team : Entity
     {
         public string Name { get; set; }
+        public int SideNavId { get; set; }
 
-        public virtual ICollection<Team> Teams { get; set; }
+        public virtual SideNav SideNav { get; set; }
     }
 }
