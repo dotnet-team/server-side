@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportsNewsAngular.Data;
 
-namespace SportsNewsAngular.Data.Migrations
+namespace SportsNewsAngular.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190908145634_EditDb")]
+    partial class EditDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,6 +248,41 @@ namespace SportsNewsAngular.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("SportsNewsAngular.Models.SideNav", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsShow");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(25);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SideNavs");
+                });
+
+            modelBuilder.Entity("SportsNewsAngular.Models.Team", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsShow");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("SideNavId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SideNavId");
+
+                    b.ToTable("Teams");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -293,6 +330,15 @@ namespace SportsNewsAngular.Data.Migrations
                     b.HasOne("SportsNewsAngular.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SportsNewsAngular.Models.Team", b =>
+                {
+                    b.HasOne("SportsNewsAngular.Models.SideNav", "SideNav")
+                        .WithMany("Teams")
+                        .HasForeignKey("SideNavId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

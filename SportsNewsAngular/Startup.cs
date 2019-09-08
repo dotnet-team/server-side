@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using SportNews.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.IO;
+using SportsNewsAngular.Repository;
 
 namespace SportsNewsAngular
 {
@@ -65,6 +66,7 @@ namespace SportsNewsAngular
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(configApp.GetSection("ConnectionStrings"));
 
+            services.AddScoped<IRepository, Repository<ApplicationDbContext>>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
