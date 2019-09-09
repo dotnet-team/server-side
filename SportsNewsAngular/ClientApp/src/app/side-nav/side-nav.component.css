@@ -7,6 +7,12 @@
   transition: margin .25s ease-out;
 }
 
+.navelement {
+  color:black;
+}
+
+
+
 .color {
   background-color: #d72130;
   color: white;
@@ -41,8 +47,6 @@
   }
 }
 
-
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -53,12 +57,18 @@
   position: absolute;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  z-index: 1;
+  padding: 12px 13px;
+  background-color: #f8f9fa;
+  overflow: visible;
+  z-index: 999;
   left: 100%;
   top: 0;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: inline-block;
+}
+
+.dropdown .hidden{
+  overflow: hidden;
 }

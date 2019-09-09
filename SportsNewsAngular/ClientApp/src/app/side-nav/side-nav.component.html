@@ -1,34 +1,30 @@
-<div class="d-flex" id="wrapper">
   <div class="bg-ligh" id="sidebar-wrapper">
     <div class="sidebar-heading color">Sport News</div>
     <table>
+      <div class="list-group list-group-flush">
+          <a href="" class="list-group-item list-group-item-action bg-light navelement">Home</a>
+      </div>
       <tr *ngFor="let p of sidenavs">
         <div class="dropdown">
           <div class="list-group list-group-flush">
-            <button class="list-group-item list-group-item-action bg-light" (mouseover)="onMouseOver($event)" id={{p?.id}}>
-              <a href="{{p?.id}}" >{{p?.name}}</a>
+            <button class="list-group-item list-group-item-action bg-light" (mouseover)="onMouseOver($event)"
+              id={{p?.id}}>
+              <a class="navelement" href="{{p?.id}}">{{p?.name}}</a>
             </button>
           </div>
           <div class="dropdown-content">
             <table>
               <tr *ngFor="let a of teams">
-                <div class="list-group list-group-flush">
-                  <a href="{{a?.id}}" class="list-group-item list-group-item-action bg-light">{{a?.name}}</a>
-                </div>
+                  <div ng-app="" ng-init="item = 1" class="list-group list-group-flush">
+                      <a ng-if="item" href="{{a?.id}}" class="list-group-item list-group-item-action bg-light">{{a?.name}}</a>
+                      <a ng-if="!item" class="hidden">11{{item}}11</a>
+                      {{item}}
+                    </div>
               </tr>
             </table>
           </div>
+          
         </div>
       </tr>
     </table>
   </div>
-</div>
-
-
-
-<div class="dropdown">
-  <span>Mouse over me</span>
-  <div class="dropdown-content">
-    <p>Hello World!</p>
-  </div>
-</div>
