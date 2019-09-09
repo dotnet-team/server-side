@@ -21,6 +21,8 @@ namespace SportsNewsAngular.Data
 
         DbSet<SideNav> SideNavs { get; set; }
         DbSet<Team> Teams { get; set; }
+        DbSet<Article> Articles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
