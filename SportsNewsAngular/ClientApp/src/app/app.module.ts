@@ -13,6 +13,8 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { ArticlesListComponent } from './articles-list/articles-list.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { SideNavComponent } from './side-nav/side-nav.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'sidenavs/:id', component: ArticlesListComponent },
     ])
   ],
   providers: [

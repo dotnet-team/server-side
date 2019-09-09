@@ -18,13 +18,17 @@ namespace SportsNewsAngular.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<Article>>> GetAll(int? teamId)
+        public async Task<ActionResult<ICollection<Article>>> GetAll(int? teamId, int? sideNavId)
         {
             var articles = await repository.FindAll<Article>();
 
             if (teamId != null)
             {
-                articles = articles.FindAll(t => t.TeamId == teamId);
+                articles = articles.FindAll(a => a.TeamId == teamId);
+            }
+            else if (sideNavId != null)
+            {
+                articles = articles.FindAll(a => a.Team.SideNavId == sideNavId);
             }
 
             return articles;
