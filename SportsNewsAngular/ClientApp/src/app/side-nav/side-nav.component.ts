@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { SideNav, Team } from './sidenav';
+import { SideNav, Team, Article } from './sidenav';
 
 @Component({
   selector: 'app-side-nav',
@@ -15,6 +15,7 @@ export class SideNavComponent implements OnInit {
   team: Team = new Team();
   teams: Team[];
   tableMode: boolean = true;          // табличный режим
+  articles: Article[];
 
   constructor(private dataService: DataService) { }
 
@@ -31,31 +32,10 @@ export class SideNavComponent implements OnInit {
     this.dataService.getTeams(id)
       .subscribe((data: Team[]) => this.teams = data);
   }
-  // сохранение данных
-  save() {
-    if (this.sidenav.id == null) {
-      this.dataService.createSideNav(this.sidenav)
-        .subscribe((data: SideNav) => this.sidenavs.push(data));
-    } else {
-      this.dataService.updateSideNav(this.sidenav)
-        .subscribe(data => this.loadSideNavs());
-    }
-    this.cancel();
-  }
-  editProduct(p: SideNav) {
-    this.sidenav = p;
-  }
-  cancel() {
-    this.sidenav = new SideNav();
-    this.tableMode = true;
-  }
-  delete(p: SideNav) {
-    this.dataService.deleteSideNav(p.id)
-      .subscribe(data => this.loadSideNavs());
-  }
-  add() {
-    this.cancel();
-    this.tableMode = false;
+
+  loadArticles(id?: number) {
+    this.dataService.getArticles(id)
+      .subscribe((data: Article[]) => this.articles = data);
   }
 
 
@@ -64,6 +44,13 @@ export class SideNavComponent implements OnInit {
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
     this.loadTeams(value);                               
+  }
+
+  onMouseOverOnTeam(event) {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+    this.loadArticles(value);
   }
 }
 

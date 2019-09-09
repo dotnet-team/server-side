@@ -11,5 +11,7 @@ namespace SportsNewsAngular.Models
         public int SideNavId { get; set; }
 
         public virtual SideNav SideNav { get; set; }
+
+        public virtual ICollection<Article> Articles { get; set; }
     }
 }
