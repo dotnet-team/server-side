@@ -37,32 +37,6 @@ export class SideNavComponent implements OnInit {
     this.dataService.getArticles(id)
       .subscribe((data: Article[]) => this.articles = data);
   }
-  // сохранение данных
-  save() {
-    if (this.sidenav.id == null) {
-      this.dataService.createSideNav(this.sidenav)
-        .subscribe((data: SideNav) => this.sidenavs.push(data));
-    } else {
-      this.dataService.updateSideNav(this.sidenav)
-        .subscribe(data => this.loadSideNavs());
-    }
-    this.cancel();
-  }
-  editProduct(p: SideNav) {
-    this.sidenav = p;
-  }
-  cancel() {
-    this.sidenav = new SideNav();
-    this.tableMode = true;
-  }
-  delete(p: SideNav) {
-    this.dataService.deleteSideNav(p.id)
-      .subscribe(data => this.loadSideNavs());
-  }
-  add() {
-    this.cancel();
-    this.tableMode = false;
-  }
 
 
   onMouseOver(event) {
