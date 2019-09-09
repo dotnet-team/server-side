@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { SideNav, Team } from './sidenav';
+import { SideNav, Team, Article } from './sidenav';
 
 @Component({
   selector: 'app-side-nav',
@@ -15,6 +15,7 @@ export class SideNavComponent implements OnInit {
   team: Team = new Team();
   teams: Team[];
   tableMode: boolean = true;          // табличный режим
+  articles: Article[];
 
   constructor(private dataService: DataService) { }
 
@@ -30,6 +31,11 @@ export class SideNavComponent implements OnInit {
   loadTeams(id?: number) {
     this.dataService.getTeams(id)
       .subscribe((data: Team[]) => this.teams = data);
+  }
+
+  loadArticles(id?: number) {
+    this.dataService.getArticles(id)
+      .subscribe((data: Article[]) => this.articles = data);
   }
   // сохранение данных
   save() {
@@ -64,6 +70,13 @@ export class SideNavComponent implements OnInit {
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
     this.loadTeams(value);                               
+  }
+
+  onMouseOverOnTeam(event) {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+    this.loadArticles(value);
   }
 }
 
