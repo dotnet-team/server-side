@@ -1,0 +1,53 @@
+<h1>Side Nav</h1>
+<input type="button" value="Create New" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Is Show</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of sideNavs">
+      <ng-template [ngIf]="sideNav?.Id != s.Id" [ngIfElse]="edit">
+        <td>{{s?.Name}}</td>
+        <td>{{s?.IsShow}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editSideNav(s)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(s)">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+<!--шаблон для редактирования-->
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="sideNav.Name" class="form-control" />
+  </td>
+  <td>
+    <input type="checkbox" [(ngModel)]="sideNav.IsShow" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
+    <input type="button" value="Cancle" (click)="cancel()" class="btn btn-sm btn-warning" />
+  </td>
+</ng-template>
+
+<!--шаблон для добавления-->
+<ng-template #create>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" [(ngModel)]="sideNav.Name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="checkbox" [(ngModel)]="sideNav.IsShow" class="form-control" />
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancle" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>
