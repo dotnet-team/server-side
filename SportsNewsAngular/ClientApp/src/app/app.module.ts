@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -14,7 +13,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
-
+import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,8 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
     CounterComponent,
     FetchDataComponent,
     SideNavComponent,
-    ArticlesListComponent
+    ArticlesListComponent,
+    EditSideNavComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,6 +37,7 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'articles/sidenav/:sideNavId', component: ArticlesListComponent },
       { path: 'articles/team/:teamId', component: ArticlesListComponent },
+      { path: 'edit/sidenav', component: EditSideNavComponent },
     ])
   ],
   providers: [
