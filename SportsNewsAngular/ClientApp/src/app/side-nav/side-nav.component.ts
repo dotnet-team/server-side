@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
 import { SideNavModel, Team, Article } from './sidenav';
+import { ActivatedRoute, Route } from '@angular/router'
+
 
 @Component({
   selector: 'app-side-nav',
@@ -14,6 +16,7 @@ export class SideNavComponent implements OnInit {
   teams: Team[];
   tableMode: boolean = true;          // табличный режим
   articles: Article[];
+    router: any;
 
   constructor(private dataService: DataService) { }
 
@@ -41,7 +44,7 @@ export class SideNavComponent implements OnInit {
     var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
-    this.loadTeams(value);                               
+    this.loadTeams(value);
   }
 
   onMouseOverOnTeam(event) {
@@ -50,6 +53,7 @@ export class SideNavComponent implements OnInit {
     var value = idAttr.nodeValue;
     this.loadArticles(value);
   }
+
 }
 
 

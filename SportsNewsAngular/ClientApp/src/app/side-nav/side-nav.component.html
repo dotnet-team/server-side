@@ -7,8 +7,8 @@
         <tr *ngFor="let p of sidenavs">
       <div class="dropdown">
         <div type="text/ng-template" class="list-group list-group-flush">
-          <button class="list-group-item list-group-item-action bg-light" (mouseover)="onMouseOver($event)"
-                  id={{p?.Id}}>
+          <button class="list-group-item list-group-item-action bg-light"
+                  (mouseover)="onMouseOver($event)" id={{p?.Id}}>
             <a class="navelement" href="sidenav/{{p?.Id}}">{{p?.Name}}</a>
           </button>
         </div>
