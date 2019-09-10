@@ -11,7 +11,14 @@
   color:black;
 }
 
+.row{
+  display: table;
+  margin-left: 1vw;
+}
 
+.follow{
+  margin-left: 3vw;
+}
 
 .color {
   background-color: #d72130;
