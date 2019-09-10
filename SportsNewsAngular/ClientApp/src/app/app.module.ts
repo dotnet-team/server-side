@@ -16,8 +16,6 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
