@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { SideNav, Team, Article } from './sidenav';
+import { SideNavModel, Team, Article } from './sidenav';
 
 @Component({
   selector: 'app-side-nav',
@@ -10,9 +10,7 @@ import { SideNav, Team, Article } from './sidenav';
 })
 export class SideNavComponent implements OnInit {
 
-  sidenav: SideNav = new SideNav();   // изменяемый товар
-  sidenavs: SideNav[];
-  team: Team = new Team();
+  sidenavs: SideNavModel[];
   teams: Team[];
   tableMode: boolean = true;          // табличный режим
   articles: Article[];
@@ -25,7 +23,7 @@ export class SideNavComponent implements OnInit {
   // получаем данные через сервис
   loadSideNavs() {
     this.dataService.getSideNavs()
-      .subscribe((data: SideNav[]) => this.sidenavs = data);
+      .subscribe((data: SideNavModel[]) => this.sidenavs = data);
   }
 
   loadTeams(id?: number) {

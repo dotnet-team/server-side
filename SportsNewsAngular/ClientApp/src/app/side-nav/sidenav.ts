@@ -1,28 +1,29 @@
 import { Data } from "@angular/router";
 
-export class SideNav {
+export class SideNavModel {
   constructor(
-    public id?: number,
-    public name?: string,
-    public isShow?: boolean) { }
+    public Id?: number,
+    public Mame?: string,
+    public IsShow?: boolean) { }
 }
 
 export class Team {
   constructor(
-    public id?: number,
-    public name?: string,
-    public isShow?: boolean,
-    public sideNavId?: number) { }
+    public Id?: number,
+    public Name?: string,
+    public IsShow?: boolean,
+    public SideNavId?: number) { }
 }
 
 export class Article {
   constructor(
-    public id?: number,
-    public name?: string,
-    public teamId?: number,
-    public country?: string,
-    public title?: string,
-    public text?: string,
-    public date?: Data,
-    public udserId?: string) {}
+    public Id?: number,
+    public Name?: string,
+    public TeamId?: number,
+    public Country?: string,
+    public Title?: string,
+    public Text?: string,
+    public Date?: Data,
+    public IsShow?: boolean,
+    public UserId?: string) {}
 }

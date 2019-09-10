@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SportsNewsAngular.Models
+namespace SportsNewsAngular.ViewModels
 {
-    public class Article : Entity
+    public class ArticleModel
     {
+        public int Id { get; set; }
+        public bool IsShow { get; set; }
         public string Name { get; set; }
         // public IFormFile Image { get; set; }
 
@@ -18,9 +20,6 @@ namespace SportsNewsAngular.Models
         public DateTime Date { get; set; }
 
         public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
-
-        public virtual Team Team { get; set; }
 
     }
 }
