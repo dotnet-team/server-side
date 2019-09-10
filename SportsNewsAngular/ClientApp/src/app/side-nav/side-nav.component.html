@@ -1,13 +1,16 @@
-<div class="bg-ligh" id="sidebar-wrapper">
-  <div class="sidebar-heading color">Sport News</div>
-  <table>
-    <div class="list-group list-group-flush">
-      <a href="" class="list-group-item list-group-item-action bg-light navelement">Home</a>
+<div id="sidebar-wrapper">
+  <div class="sidebar-heading color" style="text-align: center;">Sport News</div>
+  <table style="border: 0;">
+    <div  class="list-group list-group-flush" >
+      <a href="" id="active"><button class="list-group-item list-group-item-action " >
+     <div class="navelement" id="active">Home</div> 
+    </button></a>
+
     </div>
-        <tr *ngFor="let p of sidenavs">
+      <tr *ngFor="let p of sidenavs">
       <div class="dropdown">
         <div type="text/ng-template" class="list-group list-group-flush">
-          <button class="list-group-item list-group-item-action bg-light"
+          <button class="list-group-item list-group-item-action "
                   (mouseover)="onMouseOver($event)" id={{p?.Id}}>
             <a class="navelement" href="articles/sidenav/{{p?.Id}}">{{p?.Name}}</a>
           </button>
@@ -39,8 +42,8 @@
 
       </div>
     </tr>
-    <table class="list-group-item list-group-item-action bg-light" style="border: 0;">
-      <span class="navelement">Follow</span>
+    <table class="list-group-item " style="border: 0;">
+      <span class="navelement" style="font-weight: 450; font-size: 15px;">Follow</span>
       <div class="follow">
         <tr>
           <td><button class="btn"><i class="fa fa-facebook-f"></i></button></td>

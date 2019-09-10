@@ -1,6 +1,10 @@
 .color {
   background-color: darkred;
 }
+
+.unborder{
+  border: 0;
+}
   #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
@@ -12,6 +16,31 @@
 
   #wrapper.toggled #sidebar-wrapper {
     margin-left: 10000;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: #d72130;
+    color: white;
+  }
+
+  .static {
+    overflow: hidden;
+    position: fixed;
+  }
+
+  .color {
+    background-color: #d72130;
+    color: white;
+  }
+
+  .footer-text {
+    margin-left: 80vw;
+    margin-top: 17px;
   }
 
 @media (min-width: 768px) {
