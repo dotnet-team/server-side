@@ -22,7 +22,8 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    SideNavComponent
+    SideNavComponent,
+    ArticlesListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +34,8 @@ import { SideNavComponent } from './side-nav/side-nav.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'articles/sidenav/:sideNavId', component: ArticlesListComponent },
+      { path: 'articles/team/:teamId', component: ArticlesListComponent },
     ])
   ],
   providers: [
