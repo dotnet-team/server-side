@@ -7,8 +7,19 @@
   transition: margin .25s ease-out;
 }
 
+#active{
+  color: #d72130;
+  outline-color:   #d72130;
+}
+
 .navelement {
-  color:black;
+  color:#B2B2B2;
+  font-weight: 500;
+  padding-left: 3vw;
+}
+
+.nav-text {
+  padding-left: 3vw;
 }
 
 .row{
@@ -17,7 +28,7 @@
 }
 
 .follow{
-  margin-left: 3vw;
+  margin-left: 2.2vw;
 }
 
 .color {
