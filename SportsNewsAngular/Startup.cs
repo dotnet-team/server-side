@@ -15,6 +15,9 @@ using SportNews.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.IO;
 using SportsNewsAngular.Repository;
+using Newtonsoft.Json.Serialization;
+using AutoMapper;
+using SportsNewsAngular.Profiles;
 
 namespace SportsNewsAngular
 {
@@ -36,8 +39,10 @@ namespace SportsNewsAngular
             var configApp = configBuilder.Build();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(
+                        Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(config =>
             {
@@ -61,7 +66,24 @@ namespace SportsNewsAngular
                     options.ClientSecret = Configuration.GetConnectionString("Authentication:Google:ClientSecret");
                 });
 
-            services.AddMvc(options => options.EnableEndpointRouting = false);
+            // services.AddMvc(options => options.EnableEndpointRouting = false);
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services
+                .AddMvc(options => options.EnableEndpointRouting = false)
+                .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling =
+                                           Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(configApp.GetSection("ConnectionStrings"));

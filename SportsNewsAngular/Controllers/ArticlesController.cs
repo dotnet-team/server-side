@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SportsNewsAngular.Models;
 using SportsNewsAngular.Repository;
+using SportsNewsAngular.ViewModels;
 
 namespace SportsNewsAngular.Controllers
 {
     public class ArticlesController : Controller
     {
         private readonly IRepository repository;
+        private readonly IMapper mapper;
 
-        public ArticlesController(IRepository _repository)
+        public ArticlesController(IRepository _repository, IMapper _mapper)
         {
             repository = _repository;
+            mapper = _mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<Article>>> GetAll(int? teamId, int? sideNavId)
+        public async Task<ActionResult<ICollection<ArticleModel>>> GetAll(int? teamId, int? sideNavId)
         {
             var articles = await repository.FindAll<Article>();
 
@@ -31,25 +35,36 @@ namespace SportsNewsAngular.Controllers
                 articles = articles.FindAll(a => a.Team.SideNavId == sideNavId);
             }
 
-            return articles;
+            List<ArticleModel> newArticles = new List<ArticleModel>();
+
+            foreach (Article a in articles)
+            {
+                newArticles.Add(mapper.Map<ArticleModel>(a));
+            }
+
+            return newArticles;
         }
 
+
         [HttpGet]
-        public async Task<ActionResult<Article>> GetById(int id)
+        public async Task<ActionResult<ArticleModel>> GetById(int id)
         {
-            return await repository.FindById<Article>(id);
+            var article = await repository.FindById<Article>(id);
+            var newArticle = mapper.Map<ArticleModel>(article);
+            return newArticle;
         }
 
         [HttpPost]
-        public async Task<ActionResult<Article>> Create([FromBody] Article article)
+        public async Task<ActionResult<ArticleModel>> Create([FromBody] Article article)
         {
             await repository.CreateAsync<Article>(article);
 
-            return article;
+            var newArticle = mapper.Map<ArticleModel>(article);
+            return newArticle;
         }
 
         [HttpPut]
-        public async Task<ActionResult<Article>> Update(int id, [FromBody] Article article)
+        public async Task<ActionResult<ArticleModel>> Update(int id, [FromBody] Article article)
         {
             if (id != article.Id)
             {
@@ -57,8 +72,8 @@ namespace SportsNewsAngular.Controllers
             }
 
             await repository.UpdateAsync<Article>(article);
-            return article;
-        }
+var newArticle = mapper.Map<ArticleModel>(article);
+            return newArticle;        }
 
         [HttpDelete]
         public async Task Delete(int id)

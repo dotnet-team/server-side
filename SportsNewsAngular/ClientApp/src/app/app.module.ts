@@ -34,8 +34,6 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'sidenavs/:id', component: ArticlesListComponent },
     ])
   ],
   providers: [
