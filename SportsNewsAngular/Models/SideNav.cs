@@ -10,5 +10,10 @@ namespace SportsNewsAngular.Models
         public string Name { get; set; }
 
         public virtual ICollection<Team> Teams { get; set; }
+
+        public SideNav()
+        {
+            Teams = new List<Team>();
+        }
     }
 }

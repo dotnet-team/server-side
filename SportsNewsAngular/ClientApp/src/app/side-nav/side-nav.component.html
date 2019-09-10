@@ -4,12 +4,12 @@
     <div class="list-group list-group-flush">
       <a href="" class="list-group-item list-group-item-action bg-light navelement">Home</a>
     </div>
-    <tr *ngFor="let p of sidenavs">
+        <tr *ngFor="let p of sidenavs">
       <div class="dropdown">
-        <div class="list-group list-group-flush">
+        <div type="text/ng-template" class="list-group list-group-flush">
           <button class="list-group-item list-group-item-action bg-light" (mouseover)="onMouseOver($event)"
-            id={{p?.id}}>
-            <a class="navelement" href="{{p?.id}}">{{p?.name}}</a>
+                  id={{p?.Id}}>
+            <a class="navelement" href="sidenav/{{p?.Id}}">{{p?.Name}}</a>
           </button>
         </div>
         <div class="dropdown-content">
@@ -18,16 +18,16 @@
               <div class="list-group list-group-flush">
                 <div class="list-group list-group-flush">
                   <button class="list-group-item list-group-item-action bg-light"
-                    (mouseover)="onMouseOverOnTeam($event)" id={{t?.id}}>
-                    <a href="{{p?.id}}/{{t.id}}">{{t?.name}}</a>
+                          (mouseover)="onMouseOverOnTeam($event)" id={{t?.Id}}>
+                    <a href="team/{{t?.Id}}">{{t?.Name}}</a>
                   </button>
                 </div>
                 <div class="dropdown-content">
                   <table>
                     <tr *ngFor="let a of articles">
                       <div class="list-group list-group-flush">
-                        <a href="{{p?.id}}/{{t.id}}/{{a.id}}"
-                          class="list-group-item list-group-item-action bg-light">{{a?.name}}</a>
+                        <a href="article/{{a?.Id}}"
+                           class="list-group-item list-group-item-action bg-light">{{a?.Name}}</a>
                       </div>
                     </tr>
                   </table>

@@ -13,6 +13,8 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { ArticlesListComponent } from './articles-list/articles-list.component';
+
 
 @NgModule({
   declarations: [
