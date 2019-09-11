@@ -10,7 +10,7 @@ import { SideNav} from './sidenav';
 })
 export class EditSideNavComponent implements OnInit {
 
-  tableMode: boolean = true;          // табличный режим
+  tableMode: boolean = true;         
   sideNav: SideNav = new SideNav();
   sideNavs: SideNav[];
 
@@ -24,7 +24,7 @@ export class EditSideNavComponent implements OnInit {
     this.dataService.getSideNav()
       .subscribe((data: SideNav[]) => this.sideNavs = data);
   }
-  // сохранение данных
+
   save() {
     if (this.sideNav.Id == null) {
       this.dataService.createSideNav(this.sideNav)

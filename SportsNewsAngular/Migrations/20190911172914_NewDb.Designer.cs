@@ -10,8 +10,8 @@ using SportsNewsAngular.Data;
 namespace SportsNewsAngular.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190909074413_AddArticles")]
-    partial class AddArticles
+    [Migration("20190911172914_NewDb")]
+    partial class NewDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -257,6 +257,8 @@ namespace SportsNewsAngular.Migrations
                     b.Property<string>("Country");
 
                     b.Property<DateTime>("Date");
+
+                    b.Property<string>("ImageUrl");
 
                     b.Property<bool>("IsShow");
 

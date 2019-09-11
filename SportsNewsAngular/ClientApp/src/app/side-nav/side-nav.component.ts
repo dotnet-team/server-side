@@ -14,7 +14,7 @@ export class SideNavComponent implements OnInit {
 
   sidenavs: SideNavModel[];
   teams: Team[];
-  tableMode: boolean = true;          // табличный режим
+  tableMode: boolean = true;        
   articles: Article[];
     router: any;
 
@@ -23,7 +23,7 @@ export class SideNavComponent implements OnInit {
   ngOnInit() {
     this.loadSideNavs();
   }
-  // получаем данные через сервис
+
   loadSideNavs() {
     this.dataService.getSideNavs()
       .subscribe((data: SideNavModel[]) => this.sidenavs = data);
