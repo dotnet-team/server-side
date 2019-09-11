@@ -72,8 +72,9 @@ namespace SportsNewsAngular.Controllers
             }
 
             await repository.UpdateAsync<Article>(article);
-var newArticle = mapper.Map<ArticleModel>(article);
-            return newArticle;        }
+            var newArticle = mapper.Map<ArticleModel>(article);
+            return newArticle;
+        }
 
         [HttpDelete]
         public async Task Delete(int id)

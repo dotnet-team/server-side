@@ -18,6 +18,7 @@ export class Team {
 export class Article {
   constructor(
     public Id?: number,
+    public ImageUrl?: string,
     public Name?: string,
     public TeamId?: number,
     public Country?: string,

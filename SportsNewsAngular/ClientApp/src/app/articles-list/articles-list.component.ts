@@ -6,11 +6,12 @@ import { ActivatedRoute, Route } from '@angular/router'
 @Component({
   selector: 'app-articles-list',
   templateUrl: './articles-list.component.html',
+  styleUrls: ['./article-list.component.css'],
   providers: [DataService]
 })
 export class ArticlesListComponent implements OnInit {
 
-  tableMode: boolean = true;          // табличный режим
+  tableMode: boolean = true;          
   articles: Article[];
   teamId: any;
   sideNavId: any;
@@ -34,7 +35,6 @@ export class ArticlesListComponent implements OnInit {
     } 
 
   }
-  // получаем данные через сервис
   loadSideNavArticles(sideNavId: number) {
     this.dataService.getSideNavArticles(sideNavId)
       .subscribe((data: Article[]) => this.articles = data);

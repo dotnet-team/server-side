@@ -4,3 +4,15 @@
     <td>{{a.Title}}</td>
   </tr>
 </div>
+
+<div class="article">
+  <div class="row"  *ngFor="let a of articles">
+      <div class="col-md-3">
+        <div class="article-rectangle">
+          <img class="articlePhoto" src="../../../assets/img/home-page-photo/subArticlePhoto.png" />
+          <h5>{{a.Name}}</h5>
+          <p>{{a.Title}}</p>
+        </div>
+      </div>
+  </div>
+</div>
