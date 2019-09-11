@@ -3,6 +3,7 @@ import { Data } from "@angular/router";
 export class Article {
   constructor(
     public Id?: number,
+    public ImageUrl?: string,
     public Name?: string,
     public TeamId?: number,
     public Country?: string,

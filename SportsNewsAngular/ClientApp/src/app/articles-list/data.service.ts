@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class DataService {
 
-  private url = "/Articles/getall";
+  private url = "/Articles/getshowed";
 
 
   constructor(private http: HttpClient) {
