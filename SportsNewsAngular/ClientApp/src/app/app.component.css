@@ -30,7 +30,7 @@
 
   .static {
     overflow: hidden;
-    position: fixed;
+    position: relative;
   }
 
   .color {
