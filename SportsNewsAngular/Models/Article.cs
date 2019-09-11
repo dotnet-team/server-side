@@ -7,6 +7,7 @@ namespace SportsNewsAngular.Models
 {
     public class Article : Entity
     {
+        public string ImageUrl { get; set; }
         public string Name { get; set; }
         // public IFormFile Image { get; set; }
 

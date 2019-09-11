@@ -256,6 +256,8 @@ namespace SportsNewsAngular.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<bool>("IsShow");
 
                     b.Property<string>("Name");
