@@ -31,12 +31,18 @@ namespace SportsNewsAngular.Repository
         public async Task<List<T>> FindAll<T>() where T : Entity
         {
             var entity = await context.Set<T>().ToListAsync();
-            return entity.FindAll(e => e.IsShow == true);
+            return entity;
         }
 
         public async Task<T> FindById<T>(int id) where T : Entity
         {
             return await context.Set<T>().FirstOrDefaultAsync(i => i.Id == id && i.IsShow == true);
+        }
+
+        public async Task<List<T>> FindShowed<T>() where T : Entity
+        {
+            var entity = await context.Set<T>().ToListAsync();
+            return entity.FindAll(e => e.IsShow == true);
         }
 
         public async Task UpdateAsync<T>(T entity) where T : Entity

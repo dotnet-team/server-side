@@ -4,9 +4,9 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class DataService {
 
-  private getallSideNavurl = "/SideNavs/getall";
-  private getallTeamurl = "/Teams/getall";
-  private getallArticleurl = "/Articles/getall";
+  private getallSideNavurl = "/SideNavs/getshowed";
+  private getallTeamurl = "/Teams/getshowed";
+  private getallArticleurl = "/Articles/getshowed";
 
 
   constructor(private http: HttpClient) {

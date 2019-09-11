@@ -10,32 +10,37 @@
       <tr *ngFor="let p of sidenavs">
       <div class="dropdown">
         <div type="text/ng-template" class="list-group list-group-flush">
-          <button class="list-group-item list-group-item-action "
-                  (mouseover)="onMouseOver($event)" id={{p?.Id}}>
-            <a class="navelement" href="articles/sidenav/{{p?.Id}}">{{p?.Name}}</a>
-          </button>
+          <a href="articles/sidenav/{{p?.Id}}" >
+            <button class="list-group-item list-group-item-action "
+                    (mouseover)="onMouseOver($event)" id={{p?.Id}}>
+            <div class="navelement">{{p?.Name}}</div>
+            </button>
+          </a>
         </div>
         <div class="dropdown-content">
           <table>
             <tr *ngFor="let t of teams">
-              <div class="list-group list-group-flush">
-                <div class="list-group list-group-flush">
-                  <button class="list-group-item list-group-item-action bg-light"
-                          (mouseover)="onMouseOverOnTeam($event)" id={{t?.Id}}>
-                    <a href="articles/team/{{t?.Id}}">{{t?.Name}}</a>
-                  </button>
+                <div type="text/ng-template" class="list-group list-group-flush">
+                  <a href="articles/team/{{t?.Id}}">
+                    <button class="list-group-item list-group-item-action "
+                            (mouseover)="onMouseOverOnTeam($event)" id={{t?.Id}}>
+                      <div class="navelement">{{t?.Name}}</div>
+                    </button>
+                  </a>
                 </div>
                 <div class="dropdown-content">
                   <table>
                     <tr *ngFor="let a of articles">
-                      <div class="list-group list-group-flush">
-                        <a href="article/{{a?.Id}}"
-                           class="list-group-item list-group-item-action bg-light">{{a?.Name}}</a>
+                      <div type="text/ng-template" class="list-group list-group-flush">
+                        <a href="articles/{{a?.Id}}">
+                          <button class="list-group-item list-group-item-action ">
+                            <div class="navelement">{{a?.Name}}</div>
+                          </button>
+                        </a>
                       </div>
                     </tr>
                   </table>
                 </div>
-              </div>
             </tr>
           </table>
         </div>

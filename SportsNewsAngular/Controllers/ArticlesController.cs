@@ -45,6 +45,30 @@ namespace SportsNewsAngular.Controllers
             return newArticles;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<ICollection<ArticleModel>>> GetShowed(int? teamId, int? sideNavId)
+        {
+            var articles = await repository.FindShowed<Article>();
+
+            if (teamId != null)
+            {
+                articles = articles.FindAll(a => a.TeamId == teamId);
+            }
+            else if (sideNavId != null)
+            {
+                articles = articles.FindAll(a => a.Team.SideNavId == sideNavId);
+            }
+
+            List<ArticleModel> newArticles = new List<ArticleModel>();
+
+            foreach (Article a in articles)
+            {
+                newArticles.Add(mapper.Map<ArticleModel>(a));
+            }
+
+            return newArticles;
+        }
+
 
         [HttpGet]
         public async Task<ActionResult<ArticleModel>> GetById(int id)
