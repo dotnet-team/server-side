@@ -41,6 +41,26 @@ namespace SportsNewsAngular.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult<IEnumerable<TeamModel>>> GetShowed(int? sideNavId)
+        {
+            var teams = await repository.FindShowed<Team>();
+
+            if (sideNavId != null)
+            {
+                teams = teams.FindAll(t => t.SideNavId == sideNavId);
+            }
+
+            List<TeamModel> newTeams = new List<TeamModel>();
+
+            foreach (Team t in teams)
+            {
+                newTeams.Add(mapper.Map<TeamModel>(t));
+            }
+
+            return newTeams;
+        }
+
+        [HttpGet]
         public async Task<ActionResult<TeamModel>> GetById(int id)
         {
             var team = await repository.FindById<Team>(id);
