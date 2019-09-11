@@ -7,15 +7,42 @@
   transition: margin .25s ease-out;
 }
 
+.sub-menu{
+  position: fixed;
+  display: none;
+  width: 230px;
+  height: 878px;
+  left: 240px;
+  top: 100px;
+  background-color: white;
+}
+
 #active{
   color: #d72130;
   outline-color:   #d72130;
+}
+
+.active-rect{
+  position: absolute;
+  width: 6.4px;
+  height: 100%;
+  top: 1px;
+  right: 0;
+  background-color: #d72130;
 }
 
 .navelement {
   color:#B2B2B2;
   font-weight: 500;
   padding-left: 3vw;
+}
+
+.list-group-item:hover, .list-group-item:hover a{
+  color: #D72130;
+}
+
+.list-group-item:hover{
+  background-color:rgba(215, 33, 48, 0.11);;
 }
 
 .nav-text {
@@ -36,19 +63,52 @@
   color: white;
 }
 
-  #sidebar-wrapper .sidebar-heading {
-    padding: 1.34rem 4rem;
-    font-size: 1.2rem;
-  }
+#sidebar-wrapper .sidebar-heading {
+  padding: 1.34rem 4rem;
+  font-size: 1.2rem;
+}
 
-  #sidebar-wrapper .list-group {
-    width: 15rem;
-  }
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
 
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: white;
+  z-index: 998;
+  position: fixed;
+  min-width: 0px;
+  height: 79%;
+  overflow: hidden;
+  left: 240px;
+  top: 72px;
+}
+
+.dropdown-content-second{
+  left: 480px;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: inline-block;
+}
+
+.dropdown-content:hover .dropdown-content-second {
+  display: inline-block;
+}
+
+.dropdown .hidden{
+  overflow: hidden;
+}
 
 @media (min-width: 768px) {
   #sidebar-wrapper {
@@ -65,28 +125,4 @@
   }
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 13px;
-  background-color: #f8f9fa;
-  overflow: visible;
-  z-index: 999;
-  left: 100%;
-  top: 0;
-}
-
-.dropdown:hover .dropdown-content {
-  display: inline-block;
-}
-
-.dropdown .hidden{
-  overflow: hidden;
-}
