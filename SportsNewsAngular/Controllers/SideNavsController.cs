@@ -38,6 +38,21 @@ namespace SportsNewsAngular.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult<IEnumerable<SideNavModel>>> GetShowed()
+        {
+            var sideNavs = await repository.FindShowed<SideNav>();
+
+            List<SideNavModel> newSideNavs = new List<SideNavModel>();
+
+            foreach(SideNav s in sideNavs)
+            {
+                newSideNavs.Add(mapper.Map<SideNavModel>(s));
+            }
+
+            return newSideNavs;
+        }
+
+        [HttpGet]
         public async Task<ActionResult<SideNavModel>> GetById(int id)
         {
             var sideNav = await repository.FindById<SideNav>(id);
