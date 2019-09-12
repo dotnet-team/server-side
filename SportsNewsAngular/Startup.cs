@@ -18,6 +18,8 @@ using SportsNewsAngular.Repository;
 using Newtonsoft.Json.Serialization;
 using AutoMapper;
 using SportsNewsAngular.Profiles;
+using System;
+using SportsNewsAngular.Services;
 
 namespace SportsNewsAngular
 {
@@ -29,6 +31,8 @@ namespace SportsNewsAngular
         }
 
         public IConfiguration Configuration { get; }
+        public IConfiguration ConfigurationJSON { set; get; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -37,6 +41,7 @@ namespace SportsNewsAngular
                .SetBasePath(Directory.GetCurrentDirectory())
                .AddJsonFile("appsettings.json", optional: true);
             var configApp = configBuilder.Build();
+            this.ConfigurationJSON = configApp;
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
@@ -44,10 +49,13 @@ namespace SportsNewsAngular
                     .UseSqlServer(
                         Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>(config =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
             {
                 config.SignIn.RequireConfirmedEmail = true;
             })
+                .AddRoleManager<RoleManager<IdentityRole>>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
@@ -98,7 +106,7 @@ namespace SportsNewsAngular
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
         {
             if (env.IsDevelopment())
             {
@@ -138,6 +146,8 @@ namespace SportsNewsAngular
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            UserRoles.CreateUserRoles(services, Configuration).Wait();
         }
     }
 }
