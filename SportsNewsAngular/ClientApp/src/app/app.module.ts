@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
@@ -19,7 +18,6 @@ import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
     CounterComponent,
     FetchDataComponent,
     SideNavComponent,
@@ -32,7 +30,7 @@ import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
     FormsModule,
     ApiAuthorizationModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: ArticlesListComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'articles/sidenav/:sideNavId', component: ArticlesListComponent },
