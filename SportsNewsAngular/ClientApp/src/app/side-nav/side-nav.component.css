@@ -1,5 +1,5 @@
 #sidebar-wrapper {
-  min-height: 100vh;
+  min-height: 91.5vh;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
@@ -11,7 +11,7 @@
   position: fixed;
   display: none;
   width: 230px;
-  height: 878px;
+  height: 800px;
   left: 240px;
   top: 100px;
   background-color: white;
@@ -87,7 +87,7 @@
   z-index: 998;
   position: fixed;
   min-width: 0px;
-  height: 79%;
+  height: 80%;
   overflow: hidden;
   left: 240px;
   top: 72px;
