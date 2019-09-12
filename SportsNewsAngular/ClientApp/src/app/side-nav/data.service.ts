@@ -21,7 +21,6 @@ export class DataService {
       return this.http.get(this.getallTeamurl);
     }
     return this.http.get(this.getallTeamurl + '?sidenavid=' + id);
-    
   }
 
   getArticles(id?: number) {
