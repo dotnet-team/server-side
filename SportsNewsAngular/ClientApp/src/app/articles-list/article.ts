@@ -1,4 +1,4 @@
-import { Data } from "@angular/router";
+import { Data } from '@angular/router';
 
 export class Article {
   constructor(

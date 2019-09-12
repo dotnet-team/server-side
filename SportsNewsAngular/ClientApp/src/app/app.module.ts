@@ -37,6 +37,7 @@ import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'articles/sidenav/:sideNavId', component: ArticlesListComponent },
       { path: 'articles/team/:teamId', component: ArticlesListComponent },
+      { path: 'article/:articleId', component: ArticlesListComponent },
       { path: 'edit/sidenav', component: EditSideNavComponent },
     ])
   ],
