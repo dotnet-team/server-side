@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportsNewsAngular.Models;
 using SportsNewsAngular.Repository;
@@ -20,6 +21,7 @@ namespace SportsNewsAngular.Controllers
             mapper = _mapper;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<ICollection<TeamModel>>> GetAll(int? sideNavId)
         {
@@ -40,6 +42,7 @@ namespace SportsNewsAngular.Controllers
             return newTeams;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TeamModel>>> GetShowed(int? sideNavId)
         {
@@ -60,6 +63,7 @@ namespace SportsNewsAngular.Controllers
             return newTeams;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<TeamModel>> GetById(int id)
         {
@@ -70,6 +74,7 @@ namespace SportsNewsAngular.Controllers
             return newTeam;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<TeamModel>> Create([FromBody] Team team)
         {
@@ -80,6 +85,7 @@ namespace SportsNewsAngular.Controllers
             return newTeam;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<ActionResult<TeamModel>> Update(int id, [FromBody] Team team)
         {
@@ -94,6 +100,7 @@ namespace SportsNewsAngular.Controllers
             return newTeam;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task Delete(int id)
         {

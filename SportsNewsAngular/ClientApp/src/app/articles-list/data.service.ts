@@ -6,8 +6,6 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
 
   private url = '/Articles/getshowed';
-  private getAllArticlesurl = '/Articles/getall';
-  private getArticleurl = '/Articles/getbyid';
 
   constructor(private http: HttpClient) {
   }
@@ -20,12 +18,5 @@ export class DataService {
     return this.http.get(this.url + '?teamId=' + teamId);
   }
 
-  getArticle(id?: number) {
-    return this.http.get(this.getArticleurl + '?id=' + id);
-  }
-
-  getAllArticles() {
-    return this.http.get(this.getAllArticlesurl);
-  }
 
 }

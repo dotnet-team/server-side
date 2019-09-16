@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportsNewsAngular.Models;
 using SportsNewsAngular.Repository;
@@ -10,7 +11,6 @@ using SportsNewsAngular.ViewModels;
 
 namespace SportsNewsAngular.Controllers
 {
-   // [Route("api/[controller]")]
     public class SideNavsController : Controller
     {
         private readonly IRepository repository;
@@ -22,6 +22,7 @@ namespace SportsNewsAngular.Controllers
             mapper = _mapper;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SideNavModel>>> GetAll()
         {
@@ -37,6 +38,7 @@ namespace SportsNewsAngular.Controllers
             return newSideNavs;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SideNavModel>>> GetShowed()
         {
@@ -52,6 +54,7 @@ namespace SportsNewsAngular.Controllers
             return newSideNavs;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<SideNavModel>> GetById(int id)
         {
@@ -60,6 +63,7 @@ namespace SportsNewsAngular.Controllers
             return newsideNav;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<SideNavModel>> Create([FromBody] SideNav sideNav)
         {
@@ -69,6 +73,7 @@ namespace SportsNewsAngular.Controllers
             return newsideNav;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<ActionResult<SideNavModel>> Update(int id, [FromBody] SideNav sideNav)
         {
@@ -83,6 +88,7 @@ namespace SportsNewsAngular.Controllers
             return newsideNav;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task Delete (int id)
         {

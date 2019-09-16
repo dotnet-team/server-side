@@ -17,7 +17,6 @@ export class ArticlesListComponent implements OnInit {
   article: Article;
   teamId: any;
   sideNavId: any;
-  articleId: any;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
   }
@@ -25,17 +24,12 @@ export class ArticlesListComponent implements OnInit {
   ngOnInit() {
     this.sideNavId = this.route.snapshot.paramMap.get('sideNavId');
     this.teamId = this.route.snapshot.paramMap.get('teamId');
-    this.articleId = this.route.snapshot.paramMap.get('articleId');
 
     if (this.sideNavId != null) {
       this.loadSideNavArticles(this.sideNavId);
     } else if (this.teamId != null) {
       this.loadTeamArticles(this.teamId);
-    } else if (this.articleId != null) {
-      this.loadArticle(this.articleId);
-    } else {
-      this.loadAllArticles();
-    }
+    } 
   }
 
   loadSideNavArticles(sideNavId: number) {
@@ -48,16 +42,7 @@ export class ArticlesListComponent implements OnInit {
       .subscribe((data: Article[]) => this.articles = data);
   }
 
-  loadArticle(id?: number) {
-    this.dataService.getArticle(id)
-      .subscribe((data: Article) => this.articles.push(data));
-  }
-
-  loadAllArticles() {
-    this.dataService.getAllArticles()
-    .subscribe((data: Article[]) => this.articles = data);
-  }
-
+  
 }
 
 

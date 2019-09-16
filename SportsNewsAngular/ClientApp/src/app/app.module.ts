@@ -13,6 +13,9 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
+import { ArticleComponent } from './article/article.component';
+import { EditTeamComponent } from './edit-team/edit-team.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
     FetchDataComponent,
     SideNavComponent,
     ArticlesListComponent,
-    EditSideNavComponent
+    EditSideNavComponent,
+    ArticleComponent,
+    EditTeamComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,10 +38,11 @@ import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
       { path: '', component: ArticlesListComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'articles/sidenav/:sideNavId', component: ArticlesListComponent },
-      { path: 'articles/team/:teamId', component: ArticlesListComponent },
-      { path: 'article/:articleId', component: ArticlesListComponent },
-      { path: 'edit/sidenav', component: EditSideNavComponent },
+      { path: 'articles/sidenav/:sideNavId', component: ArticlesListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'articles/team/:teamId', component: ArticlesListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'article/:articleId', component: ArticleComponent, canActivate: [AuthorizeGuard] },
+      { path: 'edit/sidenav', component: EditSideNavComponent, canActivate: [AuthorizeGuard] },
+      { path: 'edit/team/:sideNavId', component: EditTeamComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [
