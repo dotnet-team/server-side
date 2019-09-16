@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SportsNewsAngular.Models;
 using SportsNewsAngular.Repository;
@@ -21,6 +22,7 @@ namespace SportsNewsAngular.Controllers
             mapper = _mapper;
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public async Task<ActionResult<ICollection<ArticleModel>>> GetAll(int? teamId, int? sideNavId)
         {
@@ -45,6 +47,7 @@ namespace SportsNewsAngular.Controllers
             return newArticles;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<ICollection<ArticleModel>>> GetShowed(int? teamId, int? sideNavId)
         {
@@ -69,7 +72,7 @@ namespace SportsNewsAngular.Controllers
             return newArticles;
         }
 
-
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<ArticleModel>> GetById(int id)
         {
@@ -78,6 +81,7 @@ namespace SportsNewsAngular.Controllers
             return newArticle;
         }
 
+        [Authorize(Roles = "Admin, Reviewer, Managers")]
         [HttpPost]
         public async Task<ActionResult<ArticleModel>> Create([FromBody] Article article)
         {
@@ -87,6 +91,7 @@ namespace SportsNewsAngular.Controllers
             return newArticle;
         }
 
+        [Authorize(Roles = "Admin, Reviewer, Managers")]
         [HttpPut]
         public async Task<ActionResult<ArticleModel>> Update(int id, [FromBody] Article article)
         {
@@ -100,6 +105,7 @@ namespace SportsNewsAngular.Controllers
             return newArticle;
         }
 
+        [Authorize(Roles = "Admin, Reviewer, Managers")]
         [HttpDelete]
         public async Task Delete(int id)
         {

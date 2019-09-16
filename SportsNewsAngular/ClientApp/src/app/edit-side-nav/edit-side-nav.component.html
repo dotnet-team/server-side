@@ -11,7 +11,7 @@
   <tbody>
     <tr *ngFor="let s of sideNavs">
       <ng-template [ngIf]="sideNav?.Id != s.Id" [ngIfElse]="edit">
-        <td>{{s?.Name}}</td>
+        <td><a href="edit/team/{{s?.Id}}">{{s?.Name}}</a></td>
         <td>{{s?.IsShow}}</td>
         <td>
           <button class="btn btn-sm btn-primary" (click)="editSideNav(s)">Edit</button>
@@ -41,7 +41,7 @@
     <input type="text" [(ngModel)]="sideNav.Name" class="form-control" />
   </div>
   <div class="form-group">
-    <label>Name</label>
+    <label>Is Show</label>
     <input type="checkbox" [(ngModel)]="sideNav.IsShow" class="form-control" />
   </div>
   <div>
