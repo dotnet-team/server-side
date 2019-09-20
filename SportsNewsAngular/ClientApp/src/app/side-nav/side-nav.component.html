@@ -11,8 +11,11 @@
       <tr *ngFor="let p of sidenavs">
         <div class="dropdown">
           <div type="text/ng-template" class="list-group list-group-flush">
-            <button class="list-group-item list-group-item-action" (mouseover)="onMouseOver($event)" id={{p?.Id}}>
+            <button *ngIf="(p.Id != 14)" class="list-group-item list-group-item-action" (mouseover)="onMouseOver($event)" id={{p?.Id}}>
               <a class="navelement" href="articles/sidenav/{{p?.Id}}">{{p?.Name}}</a>
+            </button>
+            <button *ngIf="(p.Id == 14)" class="list-group-item list-group-item-action" (mouseover)="onMouseOverOnVideos($event)" id={{p?.Id}}>
+              <a class="navelement" href="videos">{{p?.Name}}</a>
             </button>
           </div>
 

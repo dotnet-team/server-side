@@ -15,6 +15,8 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { EditSideNavComponent } from './edit-side-nav/edit-side-nav.component';
 import { ArticleComponent } from './article/article.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
+import { VideoComponent } from './video/video.component'
+import { VideosListComponent, SafePipe } from './videos-list/videos-list.component'
 
 
 @NgModule({
@@ -27,7 +29,10 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
     ArticlesListComponent,
     EditSideNavComponent,
     ArticleComponent,
-    EditTeamComponent
+    EditTeamComponent,
+    VideoComponent,
+    VideosListComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,6 +48,7 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
       { path: 'article/:articleId', component: ArticleComponent, canActivate: [AuthorizeGuard] },
       { path: 'edit/sidenav', component: EditSideNavComponent, canActivate: [AuthorizeGuard] },
       { path: 'edit/team/:sideNavId', component: EditTeamComponent, canActivate: [AuthorizeGuard] },
+      { path: 'videos', component: VideosListComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [

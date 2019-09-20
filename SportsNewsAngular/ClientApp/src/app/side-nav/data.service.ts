@@ -7,6 +7,7 @@ export class DataService {
   private getallSideNavurl = "/SideNavs/getshowed";
   private getallTeamurl = "/Teams/getshowed";
   private getallArticleurl = "/Articles/getshowed";
+  private getallVideoUrl = "/Videos/getshowed";
 
 
   constructor(private http: HttpClient) {
@@ -17,10 +18,10 @@ export class DataService {
   }
 
   getTeams(id?: number) {
-    if (id == null) {
-      return this.http.get(this.getallTeamurl);
-    }
-    return this.http.get(this.getallTeamurl + '?sidenavid=' + id);
+      if (id == null) {
+        return this.http.get(this.getallTeamurl);
+      }
+      return this.http.get(this.getallTeamurl + '?sidenavid=' + id);
   }
 
   getArticles(id?: number) {
@@ -31,4 +32,7 @@ export class DataService {
 
   }
 
+  getVideos() {
+    return this.http.get(this.getallVideoUrl);
+  }
 }

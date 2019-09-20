@@ -16,6 +16,7 @@ namespace SportsNewsAngular.Profiles
             CreateMap<Article, ArticleModel>();
             CreateMap<Team, TeamModel>();
             CreateMap<SideNav, SideNavModel>();
+            CreateMap<Video, VideoModel>();
         }
     }
 }

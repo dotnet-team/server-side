@@ -28,3 +28,11 @@ export class Article {
     public IsShow?: boolean,
     public UserId?: string) {}
 }
+
+export class Video {
+  constructor(
+    public Id?: number,
+    public IsShow?: boolean,
+    public VideoUrl?: string
+  ) { }
+}

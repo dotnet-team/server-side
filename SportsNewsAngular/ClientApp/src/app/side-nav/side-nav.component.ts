@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
-import { SideNavModel, Team, Article } from './sidenav';
+import { SideNavModel, Team, Article, Video } from './sidenav';
 import { ActivatedRoute, Route } from '@angular/router';
 
 
@@ -16,7 +16,8 @@ export class SideNavComponent implements OnInit {
   teams: Team[];
   tableMode: boolean = true;
   articles: Article[];
-    router: any;
+  router: any;
+  videos: Video[];
 
   constructor(private dataService: DataService) { }
 
@@ -30,20 +31,25 @@ export class SideNavComponent implements OnInit {
   }
 
   loadTeams(id?: number) {
-    this.dataService.getTeams(id)
-      .subscribe((data: Team[]) => this.teams = data);
+
+      this.dataService.getTeams(id)
+        .subscribe((data: Team[]) => this.teams = data);
   }
 
   loadArticles(id?: number) {
-    this.dataService.getArticles(id)
-      .subscribe((data: Article[]) => this.articles = data);
+       this.dataService.getArticles(id)
+        .subscribe((data: Article[]) => this.articles = data);
   }
 
   loadArticle(id?: number) {
-    this.dataService.getArticles(id)
-      .subscribe((data: Article[]) => this.articles = data);
+      this.dataService.getArticles(id)
+        .subscribe((data: Article[]) => this.articles = data);
   }
 
+  loadVideos() {
+    this.dataService.getVideos()
+      .subscribe((data: Video[]) => this.videos = data)
+  }
 
   onMouseOver(event) {
     var target = event.target || event.srcElement || event.currentTarget;
@@ -59,6 +65,9 @@ export class SideNavComponent implements OnInit {
     this.loadArticles(value);
   }
 
+  onMouseOverOnVideos(event) {
+    this.loadVideos();
+  }
 }
 
 
