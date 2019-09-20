@@ -15,6 +15,7 @@ export class SafePipe implements PipeTransform {
 @Component({
   selector: 'app-videos-list',
   templateUrl: './videos-list.component.html',
+  styleUrls: ['./videos-list.component.css'],
   providers: [DataService]
 })
 
@@ -35,11 +36,4 @@ export class VideosListComponent implements OnInit {
     this.dataService.getSideNavVideos()
       .subscribe((data: Video[]) => this.videos = data);
   }
-/*
-  getEmbedUrl(item) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(item);
-  }*/
-
 }
-
-
