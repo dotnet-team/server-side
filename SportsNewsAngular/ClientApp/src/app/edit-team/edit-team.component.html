@@ -1,0 +1,64 @@
+<h1>Teams</h1>
+<input type="button" value="Create New" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Is Show</td>
+      <td>Side Nav</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of teams">
+      <ng-template [ngIf]="team?.Id != t.Id" [ngIfElse]="edit">
+        <td>{{t?.Name}}</td>
+        <td>{{t?.IsShow}}</td>
+        <td>{{sideNav.Name}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editSideNav(t)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(t)">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="team.Name" class="form-control" />
+  </td>
+  <td>
+    <input type="checkbox" [(ngModel)]="team.IsShow" class="form-control" />
+  </td>
+  <td>
+    <select [(ngModel)]="team.SideNavId">
+        <option *ngFor="let s of sideNavs" value={{s.Id}}>{{s.Name}}</option>
+    </select>
+  </td>
+  <td>
+    <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
+    <input type="button" value="Cancle" (click)="cancel()" class="btn btn-sm btn-warning" />
+  </td>
+</ng-template>
+
+<ng-template #create>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" [(ngModel)]="team.Name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Is Show</label>
+    <input type="checkbox" [(ngModel)]="team.IsShow" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Side Nav</label>
+    <select [(ngModel)]="team.SideNavId" class="form-control">
+        <option *ngFor="let s of sideNavs" value={{s.Id}}>{{s.Name}}</option>
+    </select>
+  </div>
+  <div>
+    <input type="button" value="Save" (click)="save()" class="btn btn-success" />
+    <input type="button" value="Cancle" (click)="cancel()" class="btn btn-warning" />
+  </div>
+</ng-template>

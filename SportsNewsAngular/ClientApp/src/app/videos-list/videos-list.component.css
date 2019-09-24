@@ -1,0 +1,14 @@
+.video {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+.h_iframe iframe {
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-bottom: 15px;
+  width: 70%;
+  height: 400px;
+}
+

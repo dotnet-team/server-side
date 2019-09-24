@@ -14,6 +14,12 @@ using Microsoft.Extensions.Hosting;
 using SportNews.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.IO;
+using SportsNewsAngular.Repository;
+using Newtonsoft.Json.Serialization;
+using AutoMapper;
+using SportsNewsAngular.Profiles;
+using System;
+using SportsNewsAngular.Services;
 
 namespace SportsNewsAngular
 {
@@ -25,6 +31,8 @@ namespace SportsNewsAngular
         }
 
         public IConfiguration Configuration { get; }
+        public IConfiguration ConfigurationJSON { set; get; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,15 +41,21 @@ namespace SportsNewsAngular
                .SetBasePath(Directory.GetCurrentDirectory())
                .AddJsonFile("appsettings.json", optional: true);
             var configApp = configBuilder.Build();
+            this.ConfigurationJSON = configApp;
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                options
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(
+                        Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>(config =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
             {
                 config.SignIn.RequireConfirmedEmail = true;
             })
+                .AddRoleManager<RoleManager<IdentityRole>>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
@@ -60,11 +74,29 @@ namespace SportsNewsAngular
                     options.ClientSecret = Configuration.GetConnectionString("Authentication:Google:ClientSecret");
                 });
 
-            services.AddMvc(options => options.EnableEndpointRouting = false);
+            // services.AddMvc(options => options.EnableEndpointRouting = false);
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services
+                .AddMvc(options => options.EnableEndpointRouting = false)
+                .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling =
+                                           Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(configApp.GetSection("ConnectionStrings"));
 
+            services.AddScoped<IRepository, Repository<ApplicationDbContext>>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -74,7 +106,7 @@ namespace SportsNewsAngular
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
         {
             if (env.IsDevelopment())
             {
@@ -114,6 +146,8 @@ namespace SportsNewsAngular
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            UserRoles.CreateUserRoles(services, Configuration).Wait();
         }
     }
 }

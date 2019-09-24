@@ -8,5 +8,11 @@ namespace SportsNewsAngular.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
+
+        public ApplicationUser()
+        {
+            Articles = new List<Article>();
+        }
     }
 }

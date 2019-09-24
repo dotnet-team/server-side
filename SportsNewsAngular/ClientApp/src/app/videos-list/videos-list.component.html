@@ -1,0 +1,6 @@
+<div *ngFor="let v of videos">
+    <div class="h_iframe">
+      <iframe [src]="v.VideoUrl | safe" frameborder="0"
+              allow="picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>

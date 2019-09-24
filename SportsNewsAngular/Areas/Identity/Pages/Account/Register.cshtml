@@ -1,37 +1,71 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+	ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
-    </div>
+<style>
+	#border {
+		border-radius: 0;
+		box-shadow: none;
+
+	}
+
+	.login {
+		margin-left: 200px;
+		margin-top: 5vh;
+		margin-bottom: 8vh;
+		width: 600px;
+	}
+
+	.searchButtn {
+		border-radius: 0;
+		width: 170px;
+	}
+
+	.color {
+		background-color: #d72130;
+		color: white;
+		box-shadow: none;
+	}
+</style>
+
+<div class="login">
+	<table>
+		<tr>
+			<td><div style="margin-right:20px;">Already have an account?</div></td>
+			<td><a asp-page="./Login"><button class="btn btn-sm btn-outline-danger my-2 my-sm-0 searchButtn" type="submit">Go Log in</button></a></td>
+		</tr>
+	</table>
+</div>
+
+<div style="width:300px;">
+	<form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+		<h1>@ViewData["Title"]</h1>
+		<hr />
+		<h4>Create a new account.</h4>
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<div class="form-group">
+			<label asp-for="Input.Email"></label>
+			<input id="border" asp-for="Input.Email" class="form-control" />
+			<span asp-validation-for="Input.Email" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Input.Password"></label>
+			<input id="border" asp-for="Input.Password" class="form-control" />
+			<span asp-validation-for="Input.Password" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Input.ConfirmPassword"></label>
+			<input id="border" asp-for="Input.ConfirmPassword" class="form-control" />
+			<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+		</div>
+		<button id="border" type="submit" class="btn color">Register</button>
+	</form>
+
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+	<partial name="_ValidationScriptsPartial" />
 }

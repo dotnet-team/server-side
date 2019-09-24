@@ -1,84 +1,138 @@
-@using Microsoft.AspNetCore.Hosting
+﻿@using Microsoft.AspNetCore.Hosting
 @using Microsoft.AspNetCore.Mvc.ViewEngines
 @inject IHostingEnvironment Environment
 @inject ICompositeViewEngine Engine
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SportsNewsAngular</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Sport News</title>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/Identity/lib/bootstrap/dist/css/bootstrap.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              asp-fallback-href="~/Identity/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-    </environment>
-    <link rel="stylesheet" href="~/Identity/css/site.css" />
+	<environment include="Development">
+		<link rel="stylesheet" href="~/Identity/lib/bootstrap/dist/css/bootstrap.css" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			  asp-fallback-href="~/Identity/lib/bootstrap/dist/css/bootstrap.min.css"
+			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+	</environment>
+	<link rel="stylesheet" href="~/Identity/css/site.css" />
+	<style>
+		.rectangle {
+			position: absolute;
+			left: 0%;
+			right: 0%;
+			top: 0%;
+			bottom: 0%;
+			width: 253px;
+			height: 83px;
+			background-color: #d72130;
+		}
+
+		.rect-text {
+			position: absolute;
+			left: 26.88%;
+			right: 24.9%;
+			top: 31.33%;
+			bottom: 34.94%;
+			font-style: normal;
+			font-size: 22px;
+			line-height: 28px;
+			color: #FFFBFB;
+		}
+
+		.static {
+			overflow: hidden;
+			position: fixed;
+		}
+
+		.color {
+			background-color: #d72130;
+			color: white;
+		}
+
+		.footer-text {
+			margin-left: 80vw;
+		}
+
+		.photo {
+			position: absolute;
+			width: 642px;
+			height: 1024px;
+			left: 0px;
+			top: 0px;
+		}
+	</style>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light navbar-toggleable-sm bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" href="~/">SportsNewsAngular</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    @{
-                        var result = Engine.FindView(ViewContext, "_LoginPartial", isMainPage: false);
-                    }
-                    @if (result.Success)
-                    {
-                        await Html.RenderPartialAsync("_LoginPartial");
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("The default Identity UI layout requires a partial view '_LoginPartial' " +
-                            "usually located at '/Pages/_LoginPartial' or at '/Views/Shared/_LoginPartial' to work. Based on your configuration " +
-                            $"we have looked at it in the following locations: {System.Environment.NewLine}{string.Join(System.Environment.NewLine, result.SearchedLocations)}.");
-                    }
-                </div>
-            </div>
-        </nav>
-    </header>
+<body class="static">
+	<!--<header>
+		<nav class="navbar navbar-expand-sm navbar-light navbar-toggleable-sm bg-white border-bottom box-shadow mb-3">
+			<div class="container">
+				<a class="navbar-brand" href="~/">Sport News</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+					@{
+						var result = Engine.FindView(ViewContext, "_LoginPartial", isMainPage: false);
+					}
+					@if (result.Success)
+					{
+						await Html.RenderPartialAsync("_LoginPartial");
+					}
+					else
+					{
+						throw new InvalidOperationException("The default Identity UI layout requires a partial view '_LoginPartial' " +
+							"usually located at '/Pages/_LoginPartial' or at '/Views/Shared/_LoginPartial' to work. Based on your configuration " +
+							$"we have looked at it in the following locations: {System.Environment.NewLine}{string.Join(System.Environment.NewLine, result.SearchedLocations)}.");
+					}
+				</div>
+			</div>
+		</nav>
+	</header>-->
+	<img src="https://fs10.fex.net/preview/2447315450/0x0" class="photo">
+	<div class="container" style="margin-left:900px;">
+		<partial name="_CookieConsentPartial" optional />
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
 
-    <div class="container">
-        <partial name="_CookieConsentPartial" optional />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-    <footer class="footer border-top text-muted">
-        <div class="container">
-            &copy; 2019 - SportsNewsAngular - <a asp-area="" asp-page="Privacy">Privacy</a>
-        </div>
-    </footer>
+	<a href="~/">
+		<div class="rectangle">
+			<div class="rect-text">Sport News</div>
+		</div>
+	</a>
 
-    <environment include="Development">
-        <script src="~/Identity/lib/jquery/dist/jquery.js"></script>
-        <script src="~/Identity/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-                asp-fallback-src="~/Identity/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
-                asp-fallback-src="~/Identity/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
-        </script>
-    </environment>
-    <script src="~/Identity/js/site.js" asp-append-version="true"></script>
+	<footer class="footer text-muted color static">
+		<div class="container color footer-text">
+			2019 - Sport News - <a asp-area="" asp-page="Privacy" class="color">Privacy</a>
+		</div>
+	</footer>
 
-    @RenderSection("Scripts", required: false)
+
+	<environment include="Development">
+		<script src="~/Identity/lib/jquery/dist/jquery.js"></script>
+		<script src="~/Identity/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	</environment>
+	<environment exclude="Development">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+				asp-fallback-src="~/Identity/lib/jquery/dist/jquery.min.js"
+				asp-fallback-test="window.jQuery"
+				crossorigin="anonymous"
+				integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+		</script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+				asp-fallback-src="~/Identity/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+				asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+				crossorigin="anonymous"
+				integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+		</script>
+	</environment>
+	<script src="~/Identity/js/site.js" asp-append-version="true"></script>
+
+	@RenderSection("Scripts", required: false)
 </body>
 </html>
