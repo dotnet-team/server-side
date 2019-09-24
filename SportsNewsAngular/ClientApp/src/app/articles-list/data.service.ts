@@ -18,5 +18,8 @@ export class DataService {
     return this.http.get(this.url + '?teamId=' + teamId);
   }
 
+  getArticles() {
+    return this.http.get(this.url);
+  }
 
 }

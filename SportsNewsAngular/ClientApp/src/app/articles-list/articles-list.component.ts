@@ -29,7 +29,9 @@ export class ArticlesListComponent implements OnInit {
       this.loadSideNavArticles(this.sideNavId);
     } else if (this.teamId != null) {
       this.loadTeamArticles(this.teamId);
-    } 
+    } else {
+      this.loadArticles();
+    }
   }
 
   loadSideNavArticles(sideNavId: number) {
@@ -42,6 +44,10 @@ export class ArticlesListComponent implements OnInit {
       .subscribe((data: Article[]) => this.articles = data);
   }
 
+  loadArticles() {
+    this.dataService.getArticles()
+      .subscribe((data: Article[]) => this.articles = data);
+  }
   
 }
 
